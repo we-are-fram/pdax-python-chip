@@ -1,0 +1,25 @@
+version: '3.7'
+
+# FastAPI server
+services:
+#  fastapi:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8000:8000"
+#    volumes:
+#      - .:/app
+#    command: DB_DRIVER=postgresql uvicorn main:app --reload
+
+  # Postgres database
+  db:
+    image: postgres:12.0-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - .docker/postgres_data:/var/lib/postgresql/data/
